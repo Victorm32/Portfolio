@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faPenSquare } from '@fortawesome/free-solid-svg-icons';
-import { } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -9,7 +8,8 @@ import { } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./educacion.component.css']
 })
 export class EducacionComponent implements OnInit {
-  faPenSquare = faPenSquare;
+  faPen = faPen;
+  faTimes = faTimes
 
 
   constructor() { }
