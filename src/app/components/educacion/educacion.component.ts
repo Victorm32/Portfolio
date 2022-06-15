@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faPen, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { LoginService } from 'src/app/service/login.service';
 
 
 @Component({
@@ -9,12 +10,14 @@ import { faPen, faTimes } from '@fortawesome/free-solid-svg-icons';
 })
 export class EducacionComponent implements OnInit {
   faPen = faPen;
-  faTimes = faTimes
+  faTimes = faTimes;
+  estoyLogiado:boolean=false;
 
 
-  constructor() { }
+
+  constructor(private loginService:LoginService) { }
 
   ngOnInit(): void {
+    this.estoyLogiado=this.loginService.estaLogiado()
   }
-
 }

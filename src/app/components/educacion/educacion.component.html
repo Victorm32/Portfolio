@@ -14,8 +14,8 @@
       <div>
         <h4 class="fw-bolder m-4">
           Argentina Programa (2021-actualidad)
-          <fa-icon class="puntero" [icon]="faPen"></fa-icon>
-          <fa-icon class="puntero m-2" [icon]="faTimes"></fa-icon>
+          <fa-icon class="puntero" [icon]="faPen" *ngIf="estoyLogiado"></fa-icon>
+          <fa-icon class="puntero m-2" [icon]="faTimes" *ngIf="estoyLogiado"></fa-icon>
         </h4>
       </div>
       <div class="m-4">
@@ -32,8 +32,8 @@
       <div>
         <h4 class="fw-bolder m-4">
           Instituto Técnico Renault (2012-2014)
-          <fa-icon class="puntero" [icon]="faPen"></fa-icon>
-          <fa-icon class="puntero m-2" [icon]="faTimes"></fa-icon>
+          <fa-icon class="puntero" [icon]="faPen" *ngIf="estoyLogiado"></fa-icon>
+          <fa-icon class="puntero m-2" [icon]="faTimes" *ngIf="estoyLogiado"></fa-icon>
         </h4>
       </div>
       <div>
@@ -50,8 +50,8 @@
       <div>
         <h4 class="fw-bolder m-4">
           UTN-FRC (2006-2008)
-          <fa-icon class="puntero" [icon]="faPen"></fa-icon>
-          <fa-icon class="puntero m-2" [icon]="faTimes"></fa-icon>
+          <fa-icon class="puntero" [icon]="faPen" *ngIf="estoyLogiado"></fa-icon>
+          <fa-icon class="puntero m-2" [icon]="faTimes" *ngIf="estoyLogiado"></fa-icon>
         </h4>
       </div>
       <div>
