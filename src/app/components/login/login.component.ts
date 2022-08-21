@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '../../service/login.service'
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  userName:string="";
+  password:string="";
+  estoyLogiado=false;
+  hayError=false;
+  
+  constructor(private loginService:LoginService,
+    private router:Router
+    ) { }
 
   ngOnInit(): void {
+    this.estoyLogiado=this.loginService.estaLogiado()
   }
 
+  login(){
+    this.loginService.login(this.userName, this.password)
+                      .subscribe((data:any) =>{
+                                   if (data.isUser){  
+                                    this.router.navigate(['/']) 
+                                  }else{
+                                    this.hayError = true
+                                  }
+                                } );
+
+  }
+  cerrarAlert(){
+    this.hayError = false
+  }
 }

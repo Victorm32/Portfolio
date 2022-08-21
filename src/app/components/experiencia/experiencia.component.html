@@ -4,59 +4,34 @@
     <h1 class="text-center border-bottom">Experiencias</h1>
   </div>
 
+<ng-container *ngFor="let exp of persona.experiencias;let index = index">
   <div class="col-3">
     <div class="d-flex justify-content-center text-center">
-      <img src="../../../assets/images/logo alladio original1.jpg" alt="alladio" width="200px">
+      <img [src]="exp.urlFoto" alt="alladio" width="200px">
     </div>
-
   </div>
-  <div class="col-9">
+  <div class="col-9" >
     <div>
       <h4 
-        class="fw-bolder m-4">Operario Reparador de Moldes y Matrices (2016-actualidad)
-        <fa-icon class="puntero" [icon]="faPen"></fa-icon>
-        <fa-icon class="puntero m-2" [icon]="faTimes"></fa-icon>
+        class="fw-bolder m-4">{{exp.titulo}}
+        <fa-icon class="puntero" [icon]="faPen" *ngIf="estoyLogiado" (click)="editarTitulo()"></fa-icon>
+        <fa-icon class="puntero m-2" [icon]="faTimes" *ngIf="estoyLogiado" (click)="borrarExperiencia(exp.id)"></fa-icon>
       </h4>
+      <div class="input-group mb-3"  *ngIf="estoyEditandoTitulo">
+        <input type="text" class="form-control" placeholder="Titulo" aria-label="Titulo" aria-describedby="button-addon2" [(ngModel)]="titulos[index]">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="guardarTitulo(exp,index)">Guardar</button>
+      </div>
     </div>
     <div class="m-4">
-      <p>Efectuar reparaciones, modificaciones y ajustes en moldes y matrices que realizan las piezas para diferentes tipos de electrodomesticos.</p>
+      <p> {{exp.descripcion}} <fa-icon class="puntero" [icon]="faPen" *ngIf="estoyLogiado" (click)="editarDescripcion()"></fa-icon>
+      </p>
+      <div class="input-group mb-3"  *ngIf="estoyEditandoDescripcion">
+        <textarea class="form-control" placeholder="Descripcion" aria-label="Descripcion" aria-describedby="button-addon2" [(ngModel)]="descripcion[index]"></textarea>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="guardarDescripcion(exp,index)">Guardar</button>
+      </div>
+      
     </div>
   </div>
-  <div class="col-3">
-    <div class="d-flex justify-content-center p-3">
-      <img src="../../../assets/images/FPT_Industrial_Logo.png" alt="fpt" width="200px">
-    </div>
-
-  </div>
-  <div class="col-9">
-    <div>
-      <h4 class="fw-bolder m-4">
-        Operario de linea (2014-2016)
-        <fa-icon class="puntero" [icon]="faPen"></fa-icon>
-        <fa-icon class="puntero m-2" [icon]="faTimes"></fa-icon>
-      </h4>
-    </div>
-    <div>
-      <p class="m-4">Linea de armado, control de calidad y embalaje de motores para camiones, maquinas viales y maquinaria agricola. </p>
-    </div>
-  </div>
-  <div class="col-3 ">
-    <div class="d-flex justify-content-center">
-      <img src="../../../assets/images/logo goergalos original.png" alt="georgalos" width="200px">
-    </div>
-
-  </div>
-  <div class="col-9">
-    <div>
-      <h4 class="fw-bolder m-4">
-        Maquinista (2012-2014)
-        <fa-icon class="puntero" [icon]="faPen"></fa-icon>
-        <fa-icon class="puntero m-2" [icon]="faTimes"></fa-icon>
-      </h4>
-    </div>
-    <div>
-      <p class="m-4">Manejo de máquinas embolsadoras de caramelos, alfajores y chocolates.</p>
-    </div>
-  </div>
+</ng-container>
 </div>
 

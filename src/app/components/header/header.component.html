@@ -4,16 +4,14 @@
         <img src="../../../assets/images/logo argentina programa.png" alt="logo argentina programa" width="200" height="60" class="d-inline-block align-text-top">
       </a>
       <div class="d-flex justify-content-end">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="https://www.facebook.com/victorm.32" target="_blank">
             <img src="../../../assets/images/facebook.png" alt="facebook" width="40" height="40" class="d-inline-block align-text-top">
           </a>
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="https://www.linkedin.com/in/victorhugomu%C3%B1oz/" target="_blank">
             <img src="../../../assets/images/linkedin.png" alt="linkedin" width="40" height="40" class="d-inline-block align-text-top">
           </a>
-          <a class="navbar-brand" href="#">
-            <img src="../../../assets/images/whatapp.png" alt="whatsapp" width="40" height="40" class="d-inline-block align-text-top">
-          </a>
-        <button type="button" class="btn btn-light fw-bolder"> Login </button>
+        <button type="button" class="btn btn-light fw-bolder" routerLink="/login" *ngIf="!estoyLogiado"> Login </button>
+        <button type="button" class="btn btn-light fw-bolder" *ngIf="estoyLogiado" (click)="logout()"> Logout </button>
       </div>
     </div>
   </nav>
