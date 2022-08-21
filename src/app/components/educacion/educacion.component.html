@@ -3,61 +3,34 @@
     <div class="col-12">
       <h1 class="text-center border-bottom">Educación</h1>
     </div>
+
+    <ng-container *ngFor="let edu of persona.educacion;let index = index">
+
   
     <div class="col-3">
       <div class="d-flex justify-content-center text-center">
-        <img src="../../../assets/images/logo color argentina programa1.jpg" alt="argprog" width="200px">
+        <img  [src]="edu.urlFoto" alt="argprog" width="200px">
       </div>
-  
-    </div>
+   </div>
     <div class="col-9">
       <div>
         <h4 class="fw-bolder m-4">
-          Argentina Programa (2021-actualidad)
-          <fa-icon class="puntero" [icon]="faPen" *ngIf="estoyLogiado"></fa-icon>
-          <fa-icon class="puntero m-2" [icon]="faTimes" *ngIf="estoyLogiado"></fa-icon>
+          {{edu.carrera}}
+          <fa-icon class="puntero" [icon]="faPen" *ngIf="estoyLogiado" (click)="editarCarrera()"></fa-icon>
+          <fa-icon class="puntero m-2" [icon]="faTimes" *ngIf="estoyLogiado" (click)="borrarCarrera(edu.id)"></fa-icon>
         </h4>
+        <div class="input-group mb-3"  *ngIf="estoyEditandoCarrera">
+          <input type="text" class="form-control" placeholder="Carrera" aria-label="Carrera" aria-describedby="button-addon2" [(ngModel)]="carrera[index]">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="guardarCarrera(edu,index)">Guardar</button>
+        </div>
       </div>
       <div class="m-4">
-        <p>Plan del Gobierno Nacional en talentos y habilidades digitales.</p>
+        <span>{{edu.institucion}}</span>
+        <fa-icon class="puntero" [icon]="faPen" *ngIf="estoyLogiado" (click)="editarInstitucion()"></fa-icon>
+        <div class="input-group mb-3"  *ngIf="estoyEditandoInstitucion">
+          <textarea class="form-control" placeholder="Institución" aria-label="Institución" aria-describedby="button-addon2" [(ngModel)]="institucion[index]"></textarea>
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="guardarInstitucion(edu,index)">Guardar</button>
+        </div>
       </div>
     </div>
-    <div class="col-3">
-      <div class="d-flex justify-content-center p-3">
-        <img src="../../../assets/images/itr logo.jpg" alt="itr" width="200px">
-      </div>
-  
-    </div>
-    <div class="col-9">
-      <div>
-        <h4 class="fw-bolder m-4">
-          Instituto Técnico Renault (2012-2014)
-          <fa-icon class="puntero" [icon]="faPen" *ngIf="estoyLogiado"></fa-icon>
-          <fa-icon class="puntero m-2" [icon]="faTimes" *ngIf="estoyLogiado"></fa-icon>
-        </h4>
-      </div>
-      <div>
-        <p class="m-4">Carrera de Técnico Superior en Motores, incompleto cursado hasta 2do año. </p>
-      </div>
-    </div>
-    <div class="col-3 ">
-      <div class="d-flex justify-content-center">
-        <img src="../../../assets/images/UTN.jpg" alt="utn" width="100px">
-      </div>
-  
-    </div>
-    <div class="col-9">
-      <div>
-        <h4 class="fw-bolder m-4">
-          UTN-FRC (2006-2008)
-          <fa-icon class="puntero" [icon]="faPen" *ngIf="estoyLogiado"></fa-icon>
-          <fa-icon class="puntero m-2" [icon]="faTimes" *ngIf="estoyLogiado"></fa-icon>
-        </h4>
-      </div>
-      <div>
-        <p class="m-4">Carrera de Ingeniero Mecánico, incompleto cursado hasta 1er año.</p>
-      </div>
-    </div>
-  </div>
-  
-  
+    </ng-container>

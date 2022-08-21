@@ -1,13 +1,27 @@
-<div class="row m-4">
+<div class="row m-4" *ngFor="let pro of persona.proyecto;let index = index">
     <div class="col-12">
       <h1 class="text-center border-bottom">Proyectos</h1>
     </div>
-    <div class="col-12">
-        <a class="m-4" href="#">
-            <h2>Portfolio para editar</h2>
+    <div class="col-12 proyecto-container">
+        <a class="m-4" [href]="pro.urlProyecto" target="_blank">
+            <span class="proyecto-titulo">{{pro.titulo}} </span>
         </a>
+        <fa-icon class="puntero" [icon]="faPen" *ngIf="estoyLogiado" (click)="editarTitulo()"></fa-icon>
+        
+    </div>
+    <div class="input-group mb-3"  *ngIf="estoyEditandoTitulo">
+        <input type="text" class="form-control" placeholder="Titulo" aria-label="Titulo" aria-describedby="button-addon2" [(ngModel)]="titulos[index]">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="guardarTitulo(pro,index)">Guardar</button>
     </div>
     <div>
-        <p>proyecto final curso argentina programa</p>
+        <p>{{pro.descripcion}} 
+
+            <fa-icon class="puntero" [icon]="faPen" *ngIf="estoyLogiado" (click)="editarDescripcion()"></fa-icon>
+        </p>
+            <div class="input-group mb-3"  *ngIf="estoyEditandoDescripcion">
+                <input type="text" class="form-control" placeholder="Descripcion" aria-label="Descripcion" aria-describedby="button-addon2" [(ngModel)]="descripcion[index]">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="guardarDescripcion(pro,index)">Guardar</button>
+            </div>
     </div>
+</div>
     
